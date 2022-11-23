@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-transaction
+    hostname: mongodb
+    restart: on-failure
+    environment:
+      - MONGO_INITDB_DATABASE=demo
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: mongo --eval "rs.initiate()"
+      interval: 10s
+      start_period: 30s
+    command: "--bind_ip_all --replSet rs0"

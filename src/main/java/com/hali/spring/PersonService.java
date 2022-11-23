@@ -37,4 +37,11 @@ public class PersonService {
 				.name("test2")
 				.build());
 	}
+
+	public void addTransactionalS() {
+		personRepository.save(Person.builder()
+				.name("test1")
+				.build());
+		
+	}
 }
