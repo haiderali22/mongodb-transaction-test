@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PersonService {
-	private final PersonRepository personRepository; 
-	
-	
+	private final PersonRepository personRepository;
+
+
 	public void addNoTransactional() {
 		personRepository.save(Person.builder()
 				.name("test1")
@@ -30,7 +30,7 @@ public class PersonService {
 				.build());
 		
 		if(true)
-			throw new IllegalArgumentException("");
+			throw new IllegalArgumentException("just fail");
 		
 		
 		personRepository.save(Person.builder()
