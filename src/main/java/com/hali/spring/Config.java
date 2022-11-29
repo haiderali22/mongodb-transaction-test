@@ -18,16 +18,4 @@ public class Config {
 	MongoTransactionManager mongoTransactionManager(MongoDatabaseFactory dbFactory) {
 	    return new MongoTransactionManager(dbFactory);
 	}
-
-	@Bean
-	BeanPostProcessor mongodArgumentsPostProcessor() {
-		return new TypedBeanPostProcessor<>(MongodArguments.class, Config::enableTransaction, Function.identity());
-	}
-
-	private static MongodArguments enableTransaction(MongodArguments src) {
-		return MongodArguments.builder()
-			.from(src)
-			.useNoJournal(false)
-			.build();
-	}
 }
